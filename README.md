@@ -1,1 +1,1 @@
-# learnyouahaskell
+# learnyouahaskell samples
