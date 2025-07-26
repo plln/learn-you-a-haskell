@@ -8,6 +8,7 @@ doubleSmallNumber x = if x >= 100 then x else 2 * x
 
 doubleSmallNumber' x = doubleSmallNumber x + 1
 
+conanO'Brien :: String
 conanO'Brien = "It's me, Conan O' Brien!"
 
 oddList xs = [x | x <- xs, odd x]
@@ -57,3 +58,11 @@ factorial x = product [1 .. x]
 
 circumference :: Float -> Float
 circumference r = 2 * pi * r
+
+circumference' :: Double -> Double
+circumference' r = 2 * pi * r
+
+--Types and typeclasses
+-- Standard Types: Int, Integer, Float, Double, Char, Bool, String
+-- Typeclasses: Eq, Ord, Show, Read, Enum, Bounded, Num, Integral, Floating
+-- Typeclass Instances: Int is an instance of Num, Eq, Ord, Show, Read
