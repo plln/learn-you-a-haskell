@@ -1,4 +1,3 @@
-import Control.Arrow (ArrowChoice (right))
 
 doubleMe x = x + x
 
@@ -13,7 +12,7 @@ conanO'Brien = "It's me, Conan O' Brien!"
 
 oddList xs = [x | x <- xs, odd x]
 
-twoTimes xs = [2 * n | n <- xs]
+twoTimes xs = [2 * x | x <- xs]
 
 threeTimes xs = [3 * x | x <- xs]
 
@@ -39,7 +38,7 @@ chrsWlkn = ("Christopher", "Walken", 55)
 evenLists xxs = [[x | x <- xs, even x] | xs <- xxs]
 
 -- machine trying to be smart (0)
-zipNumbersTill10 xs ys = [(x, y) | (x, y) <- zip xs ys, x + y > 10]
+zipNumbersSumGt10 xs ys = [(x, y) | (x, y) <- zip xs ys, x + y > 10]
 
 zipTill xs limit = [(y, x) | (x, y) <- zip xs [1 ..], y <= limit]
 
