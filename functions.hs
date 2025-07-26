@@ -37,8 +37,10 @@ second (_, y, _) = y
 third :: (a, b, c) -> c
 third (_, _, z) = z
 
+sumTuples :: (Num a) => [(a, a)] -> [a]
 sumTuples xs = [a + b | (a, b) <- xs]
 
+sumTriples :: (Num a) => [(a, a, a)] -> [a]
 sumTriples xs = [a + b + c | (a, b, c) <- xs]
 
 head' :: [a] -> a
@@ -52,18 +54,41 @@ myHead xs = xs !! 0
 tell :: (Show a) => [a] -> String
 tell [] = "The list is empty"
 tell [x] = "The list has one element: " ++ show x
-tell (x:[y]) = "The list has 2 elements: " ++ show x ++ " and " ++ show y
+tell (x : [y]) = "The list has 2 elements: " ++ show x ++ " and " ++ show y
 tell (x : y : _) = "The list is long, the first 2 elements are: " ++ show x ++ " and " ++ show y
 
 length' :: (Num b) => [a] -> b
 length' [] = 0
-length' (_:xs) = 1 + length' xs
+length' (_ : xs) = 1 + length' xs
 
 sum' :: (Num a) => [a] -> a
 sum' [] = 0
-sum' (x:xs) = x + sum' xs
+sum' (x : xs) = x + sum' xs
 
 product' :: (Num a) => [a] -> a
 product' [] = 1
-product' (x:xs) = x * product' xs
+product' (x : xs) = x * product' xs
+
+-- guards
+
+densityTell :: (RealFloat a) => a -> a -> String
+densityTell mass volume
+  | density < air = "Wow! You are going for a ride in the sky!"
+  | density <= water = "Have fun swimming!"
+  | otherwise = "You are going to sink!"
+  where
+    density = mass / volume
+    air = 1.2
+    water = 1000.0
+
+max' :: (Ord a) => a -> a -> a
+max' a b
+  | a > b = a
+  | otherwise = b
+
+myCompare :: (Ord a) => a -> a -> Ordering
+a `myCompare` b
+  | a > b = GT
+  | a == b = EQ
+  | otherwise = LT
 
