@@ -92,3 +92,27 @@ a `myCompare` b
   | a == b = EQ
   | otherwise = LT
 
+-- you can also use where bindings to pattern match!
+initials :: String -> String -> String
+initials firstName lastName = [f] ++ "." ++ [l] ++ "."
+  where
+    (f : _) = firstName
+    (l : _) = lastName
+
+initials' :: String -> String -> String
+initials' (f : _) (l : _) = [f] ++ "." ++ [l] ++ "."
+
+-- just like we have defined constants in where blocks, we can also define functions.
+calcDensities :: (RealFloat a) => [(a, a)] -> [a]
+calcDensities xs = [density m v | (m, v) <- xs]
+  where
+    density mass volume = mass / volume
+
+calcDensitiesAndTell :: (RealFloat a) => [(a, a)] -> [String]
+calcDensitiesAndTell xs = [densityTell m v | (m, v) <- xs]
+
+-- where bindings can also be nested
+
+-- let bindings
+
+-- case expressions
