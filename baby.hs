@@ -1,4 +1,3 @@
-
 doubleMe x = x + x
 
 doubleUs x y = doubleMe x + doubleMe y
@@ -29,8 +28,8 @@ length' xs = sum [1 | _ <- xs]
 removeLowercase' :: String -> String
 removeLowercase' str = [ch | ch <- str, ch `notElem` ['a' .. 'z']]
 
-removeLowercase :: String -> String
-removeLowercase str = [ch | ch <- str, ch `elem` ['A' .. 'Z']]
+allowUppercase :: String -> String
+allowUppercase str = [ch | ch <- str, ch `elem` ['A' .. 'Z']]
 
 chrsWlkn :: (String, String, Int)
 chrsWlkn = ("Christopher", "Walken", 55)
@@ -61,7 +60,12 @@ circumference r = 2 * pi * r
 circumference' :: Double -> Double
 circumference' r = 2 * pi * r
 
---Types and typeclasses
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' a [] = False
+-- elem' a (x : xs) = if x == a then True else elem' a xs
+elem' a (x : xs) = x == a || elem' a xs
+
+-- Types and typeclasses
 -- Standard Types: Int, Integer, Float, Double, Char, Bool, String
 -- Typeclasses: Eq, Ord, Show, Read, Enum, Bounded, Num, Integral, Floating
 -- Typeclass Instances: Int is an instance of Num, Eq, Ord, Show, Read
