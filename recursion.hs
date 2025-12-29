@@ -14,11 +14,9 @@ myMaximum [] = error "it is an empty list"
 myMaximum [x] = x
 myMaximum (x : xs) = max x (myMaximum xs)
 
-replicate' :: Int -> a -> [a]
-replicate' 0 x = []
-replicate' 1 x = [x]
+replicate' :: (Num i, Ord i) => i -> a -> [a]
 replicate' n x
-  | n < 0 = error "invalid input value"
+  | n <= 0 = []
   | otherwise = x : replicate' (n - 1) x
 
 take' :: Int -> [a] -> [a]
@@ -39,6 +37,8 @@ repeat' :: Int -> a -> [a]
 repeat' n x
   | n <= 0 = []
   | otherwise = x : repeat' (n - 1) x
+
+-- replicate' and repeat' are the same
 
 zip' :: [a] -> [b] -> [(a, b)]
 zip' [] _ = []
