@@ -40,3 +40,8 @@ elem' _ [] = False
 elem' i (x : xs)
   | i == x = True
   | otherwise = elem' i xs
+
+zip' :: [a] -> [b] -> [(a, b)]
+zip' [] _ = []
+zip' _ [] = []
+zip' (x : xs) (y : ys) = (x, y) : zip' xs ys
